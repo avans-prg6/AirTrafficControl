@@ -1,0 +1,56 @@
+﻿@model AirTrafficControl.Web.Models.DirectToLaneViewModel
+
+@{
+    ViewData["Title"] = "RequestApproved";
+}
+
+<h1>Landing permission granted!</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AircraftCode)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AircraftCode)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AircraftType)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AircraftType)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Lane)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Lane)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.PermissionTime)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.PermissionTime)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Airline)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Airline)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Handler)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Handler)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TowerContactFrequency)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TowerContactFrequency)
+        </dd>
+    </dl>
+</div>
+

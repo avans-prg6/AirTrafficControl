@@ -1,0 +1,62 @@
+﻿@model AirTrafficControl.Web.Models.IncomingArrivalViewModel
+
+@{
+    ViewData["Title"] = "RegisterLandingRequest";
+}
+
+<h1>Register Landing Request</h1>
+<div class="container">
+    <form asp-action="HandleLandingRequest">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="IATAFlightNumber" class="control-label"></label>
+                    <input asp-for="IATAFlightNumber" class="form-control" />
+                    <span asp-validation-for="IATAFlightNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AirlineCode" class="control-label"></label>
+                    <select asp-for="AirlineCode" class="selectpicker form-control" data-live-search="true"
+                            asp-items="@(new SelectList(ViewBag.Airlines,"Code","Name"))">
+                        <option>Please select one</option>
+                    </select>
+                    <span asp-validation-for="AirlineCode" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="InitialArrivalTime" class="control-label"></label>
+                    <input asp-for="InitialArrivalTime" class="form-control" />
+                    <span asp-validation-for="InitialArrivalTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TowerCallsign" class="control-label"></label>
+                    <select asp-for="TowerCallsign" class="selectpicker form-control" data-live-search="true"
+                            asp-items="@(new SelectList(ViewBag.TrafficControllers, "callsign", "displayname"))">
+                        <option>Please select one</option>
+                    </select>
+                    <span asp-validation-for="TowerCallsign" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
