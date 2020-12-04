@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option csharp_namespace = "IATA";
+
+package IATA;
+
+// The greeting service definition.
+service IATAChecks {
+  // Sends a greeting
+  rpc CheckCallsign (CheckCallsignRequest) returns (CheckCallsignReply);
+  rpc GetFlightInformation (FlightInfoRequest) returns (FlightInfoReply);
+  rpc GetAirlines (AirlinesRequest) returns (AirlinesReply);
+  rpc GetAirTrafficControllers (AirTrafficControllersRequest) returns (AirTrafficControllersReply);
+}
+
+message AirTrafficControllersRequest{
+    string filter = 1;
+}
+
+message AirTrafficControllersReply{
+    repeated AirTrafficController airTrafficController = 1;
+}
+
+message AirTrafficController{
+    string firstName = 1;
+    string lastName = 2;
+    string callsign = 3;
+}
+
+message AirlinesRequest{
+  string filter = 1;
+}
+
+message AirlinesReply{
+ repeated Airline airline = 1;
+}
+
+message Airline {  
+    string Name =1;
+    string Code = 2;
+}
+
+message CheckCallsignRequest {
+  string callsign = 1;
+}
+
+message CheckCallsignReply {
+  string firstName = 1;
+  string lastName = 2;
+  string callsign = 3;
+}
+
+message FlightInfoRequest{
+    string IATAFlightNumber =1;
+    string AirlineCode = 2;
+}
+
+message FlightInfoReply{
+    string AircraftType = 1;
+    string Airline = 2;
+    string IATAFlightNumber = 3;
+}

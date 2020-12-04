@@ -7,9 +7,12 @@ using System.Linq;
 
 namespace AirTrafficControl.Web.Models
 {
+    //TODO: Add all the validation attributes
     public class IncomingArrivalViewModel : IValidatableObject
     {
+        [Required]
         public string IATAFlightNumber { get; set; }
+
         public string TowerCallsign { get; set; }
         public DateTime InitialArrivalTime { get; set; }
         public string AircraftType { get; set; }
@@ -23,6 +26,7 @@ namespace AirTrafficControl.Web.Models
         /// <returns> zero or more validation results</returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            //TODO: ADD CUSTOM VALIDATION
             // regel hieronder verwijderen zodra je jouw validaties gaat toevoegen.
             yield return ValidationResult.Success;
         }

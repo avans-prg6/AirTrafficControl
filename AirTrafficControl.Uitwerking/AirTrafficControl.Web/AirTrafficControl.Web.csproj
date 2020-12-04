@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\..\IATA\Protos\IATA.proto" GrpcServices="Client">
+    <Protobuf Include="..\IATA\Protos\IATA.proto" GrpcServices="Client">
       <Link>Protos\IATA.proto</Link>
     </Protobuf>
   </ItemGroup>
