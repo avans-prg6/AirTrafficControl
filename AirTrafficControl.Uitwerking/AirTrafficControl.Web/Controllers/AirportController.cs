@@ -46,15 +46,17 @@ namespace AirTrafficControl.Web.Controllers
             if (ModelState.IsValid)
             {
                 var randomLane = new Random();
-                var result = new DirectToLaneViewModel();
-                result.PermissionTime =  incomingArrival.InitialArrivalTime;
-                result.Handler = incomingArrival.TowerCallsign;
-                result.AircraftCode = $"{incomingArrival.AirlineCode}{incomingArrival.IATAFlightNumber}";
-                result.Airline = incomingArrival.AirlineName;
-                // direct aircraft to a random Lane
-                result.Lane = randomLane.Next(1, airportData.Lanes).ToString();
-                result.TowerContactFrequency = airportData.TowerFrequency;
-                result.AircraftType = incomingArrival.AircraftType;
+                var result = new DirectToLaneViewModel
+                {
+                    PermissionTime = incomingArrival.InitialArrivalTime,
+                    Handler = incomingArrival.TowerCallsign,
+                    AircraftCode = $"{incomingArrival.AirlineCode}{incomingArrival.IATAFlightNumber}",
+                    Airline = incomingArrival.AirlineName,
+                    // direct aircraft to a random Lane
+                    Lane = randomLane.Next(1, airportData.Lanes).ToString(),
+                    TowerContactFrequency = airportData.TowerFrequency,
+                    AircraftType = incomingArrival.AircraftType
+                };
                 return View("RequestApproved", result);
             }
             ViewBag.Airlines = _service.GetAirlines(new IATA.AirlinesRequest { Filter = "" }).Airline;
