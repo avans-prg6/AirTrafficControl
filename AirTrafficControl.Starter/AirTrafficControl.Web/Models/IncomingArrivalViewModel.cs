@@ -39,15 +39,7 @@ namespace AirTrafficControl.Web.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var _service = (IATA.IATAChecks.IATAChecksClient)validationContext.GetService<IATA.IATAChecks.IATAChecksClient>();
-            if (value == null || string.IsNullOrWhiteSpace((string)value))
-                return new ValidationResult($"No handler selected");
-            else
-            {
-                var handler = _service.CheckCallsign(new IATA.CheckCallsignRequest { Callsign = (string)value });
-                if (string.IsNullOrEmpty(handler.LastName))
-                    return new ValidationResult($"Callsign for handler '{value}' is not registered with IATA.");
-            }
+            // TODO: Build custom validation attribute for ToweCallSign
             return ValidationResult.Success;
         }
     }
